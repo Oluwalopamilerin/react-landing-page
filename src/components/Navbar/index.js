@@ -7,7 +7,7 @@ import {FaBars, FaTimes} from "react-icons/fa"
 
 const Navbar = () => {
   const [click, setClick] = useState(false);
-  const handleClick = () => setClick(!click);
+  const handleClick = () => setClick(prev => !prev);
 
   const [color, setColor] = useState(false);
   const changeColor = () => {
@@ -20,24 +20,39 @@ const Navbar = () => {
 
   window.addEventListener("scroll", changeColor);
 
+  const linkList = [
+    {
+      id:1, 
+      title: "Home",
+      path: "/"
+    },
+    {
+      id:2, 
+      title: "About",
+      path: "/about"
+    },
+    {
+      id:3, 
+      title: "Projects",
+      path: "/project"
+    },
+    {
+      id:4, 
+      title: "Contact",
+      path: "/contact"
+    }
+  ]
   return (
     <div className={color ? "header header-bg" : "header"}>
       <Link to="/">
         <h1>Portfolio</h1>
       </Link>
       <ul className={click? "nav-menu active" : "nav-menu"}>
-        <li>
-          <Link to="/">Home</Link>
+        {linkList?.map((obj) => (
+          <li key={obj?.id}>
+          <Link to={obj.path}>{obj.title}</Link>
         </li>
-        <li>
-          <Link to="/about">About</Link>
-        </li>
-        <li>
-          <Link to="/project">Projects</Link>
-        </li>
-        <li>
-          <Link to="/contact">Contact</Link>
-        </li>
+        ))}
       </ul>
 
       <div className="hamburger" onClick={handleClick}>

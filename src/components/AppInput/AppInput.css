@@ -1,18 +1,11 @@
-label{
+.input-label{
   color: #fff;
   margin-bottom: 0.5rem;
 }
 
-form{
-  display: flex;
-  flex-direction: column;
-  padding: 4rem 1rem;
-  margin: auto;
-  max-width: 600px;
-}
 
-form input,
-form textarea{
+.app-input{
+ background-color: red;
   outline: none;
   border: none;
   margin-bottom: 1rem;
